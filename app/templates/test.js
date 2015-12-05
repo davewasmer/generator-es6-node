@@ -1,7 +1,8 @@
-import test from "tape"
-import <%= camelModuleName %> from "../src"
+import expect from 'must';
+import <%= camelModuleName %> from '../src';
 
-test("<%= camelModuleName %>", (t) => {
-  t.plan(1)
-  t.equal(true, <%= camelModuleName %>(), "return true")
-})
+describe('<%= camelModuleName %>', function() {
+  it('should have a test!', function() {
+    expect(<%= camelModuleName %>).to.be.a.function();
+  });
+});
