@@ -9,14 +9,14 @@
   ],
   "scripts": {
     "prepublish": "in-publish && npm run lint && npm test && npm run coverage && npm run compile || echo ''",
-    "test": "NODE_ENV=test node_modules/.bin/mocha --compilers js:babel-core/register",
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register",
     "lint": "eslint src test",
-    "build": "babel src --out-dir dist",
-    "coverage": "babel-node node_modules/.bin/isparta cover node_modules/.bin/_mocha && node_modules/.bin/coveralls < coverage/lcov.info",
+    "build": "npm run clean && babel src --out-dir dist",
+    "coverage": "babel-node isparta cover _mocha && coveralls < coverage/lcov.info",
     "postcoverage": "rimraf coverage",
     "watch": "watch 'npm run build && npm run test' src test",
-    "clean": "rimraf dist",
-    "postpublish": "greenkeeper enable > /dev/null 2>&1"
+    "docs": "docify build",
+    "clean": "rimraf dist"
   },
   "repository": {
     "type": "git",
@@ -29,9 +29,11 @@
   },
   "homepage": "https://github.com/davewasmer/<%= moduleName %>#readme",
   "devDependencies": {
+    "babel-cli": "^6.3.15",
     "babel-core": "^6.2.1",
     "babel-eslint": "^4.1.6",
     "coveralls": "^2.11.4",
+    "docify": "^0.1.6",
     "eslint-config-airbnb": "^1.0.2",
     "eslint": "^1.10.1",
     "in-publish": "2.0.0",

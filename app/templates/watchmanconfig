@@ -1,3 +1,4 @@
 {
-  "ignore_dirs": ["dist", "node_modules"]
+  "ignore_vcs": true,
+  "ignore_dirs": ["dist", "docs", "docs-dist", "node_modules"]
 }

@@ -51,5 +51,8 @@ module.exports = Yeoman.generators.Base.extend({
       });
     }.bind(this))
   },
-  install: function () { this.installDependencies({ bower: false }) }
+  install: function () {
+    this.installDependencies({ bower: false });
+    this.spawnCommand('node_modules/.bin/docify', [ 'init' ]);
+  }
 })
